@@ -31,7 +31,7 @@ const Key =({ letter }: KeyProps) => {
     fontWeight: "bold",
   };
 
-  if (letter === "ENTER" && progressGame.status === ProgressGameStatus.FINISHED) {
+  if ((letter === "ENTER" || letter === "DELETE") && progressGame.status === ProgressGameStatus.FINISHED) {
     style = {
       ...style,
       background: "grey"
@@ -43,7 +43,7 @@ const Key =({ letter }: KeyProps) => {
       <button
         className="bg-slate-200 dark:bg-slate-600 dark:text-white"
         onClick={() => handleSpacialAction()}
-        disabled={letter === "ENTER" && progressGame.status === ProgressGameStatus.FINISHED}
+        disabled={(letter === "ENTER" || letter === "DELETE") && progressGame.status === ProgressGameStatus.FINISHED}
         style={style}
       >
         {letter === "ENTER" ? letter : <FontAwesomeIcon icon={faDeleteLeft} />}
